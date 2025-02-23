@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>App Cats</h1>
+    <span id="error"></span>
     <br><br>
 
     <section class="randomCats">
@@ -15,12 +16,12 @@
         <h2>Random Cats</h2>
         <article>
             <img id="img1" width="300" alt="Photo about a Random Cats">
-            <button>Save Cat in favorites</button>
+            <button id="btn1">Save Cat in favorites</button>
         </article>
 
         <article>
             <img id="img2" width="300" alt="Photo about a Random Cats">
-            <button>Save Cat in favorites</button>
+            <button id="btn2">Save Cat in favorites</button>
         </article>
 
         <br><br>
@@ -29,10 +30,7 @@
 
     <section class="favoritesCats">
         <h2>Favorites Cats</h2>
-        <article>
-            <img id="img1" width="300" alt="Photo about a Random Cats">
-            <button>Extract Cat in favorites</button>
-        </article>
+        <div id="favoriteContainer"></div>
     </section>
 
     <script src="main.js"></script>

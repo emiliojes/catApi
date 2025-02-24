@@ -1,6 +1,6 @@
 const API_URL_RANDOM = 'https://api.thecatapi.com/v1/images/search?limit=2&api_key=live_IbM0E4tujUoIiJdtZwleFyDSrQe8Rx3TjYi7JtToqLH7qiCae2USnN1v2jcjR1R3';
 const API_URL_FAVORITE = 'https://api.thecatapi.com/v1/favourites';
-const API_URL_DELETE_FAVORITE = 'https://api.thecatapi.com/v1/favourites'; // Same as API_URL_FAVORITE
+const API_URL_DELETE_FAVORITE = 'https://api.thecatapi.com/v1/favourites'; // Misma URL para borrar, se añade el id al final
 
 const API_KEY = 'live_IbM0E4tujUoIiJdtZwleFyDSrQe8Rx3TjYi7JtToqLH7qiCae2USnN1v2jcjR1R3';
 
@@ -23,13 +23,13 @@ async function catRandomReload() {
         img1.src = data[0].url;
         img2.src = data[1].url;
 
-        // Assign click events to save images as favorites
+        // Asigna los eventos para guardar en favoritos
         btn1.onclick = () => addFavoriteCat(data[0].id);
         btn2.onclick = () => addFavoriteCat(data[1].id);
     }
 }
 
-// Function to add a cat to favorites
+// Función para agregar un gato a favoritos
 async function addFavoriteCat(imageId) {
     const res = await fetch(API_URL_FAVORITE, {
         method: "POST",
@@ -48,11 +48,11 @@ async function addFavoriteCat(imageId) {
     if (res.status !== 200) {
         spanError.innerHTML = `Error adding favorite: ${res.status} ${data.message}`;
     } else {
-        loadFavoriteCats(); // Reload favorite cats after adding one
+        loadFavoriteCats(); // Recarga la lista de favoritos
     }
 }
 
-// Function to load favorite cats
+// Función para cargar y mostrar los gatos favoritos
 async function loadFavoriteCats() {
     const res = await fetch(API_URL_FAVORITE, {
         method: "GET",
@@ -67,8 +67,9 @@ async function loadFavoriteCats() {
     if (res.status !== 200) {
         spanError.innerHTML = `Error loading favorites: ${res.status} ${data.message}`;
     } else {
-        const favoritesContainer = document.getElementById("favoritesContainer");
-        favoritesContainer.innerHTML = ""; // Clear previous favorites
+        // Asegúrate de que el id coincida con el HTML (favoriteContainer)
+        const favoritesContainer = document.getElementById("favoriteContainer");
+        favoritesContainer.innerHTML = ""; // Limpia favoritos anteriores
 
         data.forEach(cat => {
             const article = document.createElement("article");
@@ -88,4 +89,24 @@ async function loadFavoriteCats() {
     }
 }
 
-catRandomReload()
+// Función para eliminar un gato de favoritos
+async function removeFavoriteCat(favoriteId) {
+    const res = await fetch(`${API_URL_DELETE_FAVORITE}/${favoriteId}`, {
+        method: "DELETE",
+        headers: {
+            "x-api-key": API_KEY,
+        }
+    });
+
+    const data = await res.json();
+    console.log("Removed from favorites:", data);
+
+    if (res.status !== 200) {
+        spanError.innerHTML = `Error removing favorite: ${res.status} ${data.message}`;
+    } else {
+        loadFavoriteCats(); // Recarga la lista de favoritos
+    }
+}
+
+// Carga las imágenes aleatorias al iniciar la aplicación
+catRandomReload();

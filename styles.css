@@ -13,8 +13,16 @@ h1 {
     color: #333;
 }
 
+.randomCats article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 /*Sections*/
 section {
+    display: inline-block;
     background: white;
     padding: 20px;
     margin: 20px auto;
@@ -29,6 +37,10 @@ img {
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     margin-bottom: 10px;
+}
+
+.small-img {
+    width: 400px;
 }
 
 /*Button*/
@@ -46,6 +58,34 @@ button {
 
 button:hover {
     background-color: #e68900;
+}
+
+/* Contenedor para centrar título y sección */
+.randomCats-container,
+.favoritesCats {
+    text-align: center;
+    margin: 20px auto;
+}
+
+/* Sección ajustada al tamaño de su contenido */
+.randomCats,
+.favoritesCats {
+    display: inline-block;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Opcional: si deseas que el section de favoritos se vea similar */
+.randomCats,
+.favoritesCats {
+    display: inline-block;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
 /*Responsive Design*/

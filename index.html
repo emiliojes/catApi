@@ -11,27 +11,25 @@
     <span id="error"></span>
     <br><br>
 
-    <section class="randomCats">
-
-        <h2>Random Cats</h2>
-        <article>
-            <img id="img1" width="200" alt="Photo about a Random Cats">
+    <div class="randomCats-container">
+        <section class="randomCats">
+            <h2>Random Cats</h2>
+            <button onclick="catRandomReload()">Reload</button>
+          <article>
+            <img class="small-img" id="img1" width="200" alt="Photo about a Random Cats">
             <button id="btn1">Save Cat in favorites</button>
-        </article>
-
-        <article>
-            <img id="img2" width="200" alt="Photo about a Random Cats">
+          </article>
+          <article>
+            <img class="small-img" id="img2" width="200" alt="Photo about a Random Cats">
             <button id="btn2">Save Cat in favorites</button>
-        </article>
-
-        <br><br>
-        <button onclick="catRandomReload()">Reload</button>
-    </section>
-
+          </article>
+        </section>
+    </div>
     <section class="favoritesCats">
         <h2>Favorites Cats</h2>
         <div id="favoriteContainer"></div>
     </section>
+    
 
     <script src="main.js"></script>
 </body>
